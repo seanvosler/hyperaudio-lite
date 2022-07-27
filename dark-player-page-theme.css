@@ -1,0 +1,60 @@
+/*** 
+Preview: https://sean.co/interactive-interview-video/kate-buck.html
+
+1. add this to the main css file or directly into the index - you may need to remove some instances of !important in the original CSS 
+2. (optional) wrap everything in the body in a div with class "stuff" to make responsive.
+
+***/
+
+/* basic style stuff */
+body{font-family:sans-serif; background:black;}
+.stuff{width:50vw;min-width:1024px;margin:0 auto; }
+
+/* div holding the transcript */
+.hyperaudio-transcript{background:black;margin:0;overflow-y:scroll; height:55vh;padding: 25px 35px 0px 35px;}
+
+/* scrollbar style*/
+.hyperaudio-transcript::-webkit-scrollbar {width: 12px;}
+.hyperaudio-transcript::-webkit-scrollbar-track {background: #252525;}
+.hyperaudio-transcript::-webkit-scrollbar-thumb {-webkit-box-shadow: outset 0 0 12px black;background:yellow;height:3vh;}
+
+
+/* div holding the video */
+.hyperaudio-player{margin:0;}
+
+
+/* style words */
+
+p {margin-block-start: .7em;margin-block-end: .7em; font-size:1.2em;line-height:1.4em;}
+
+/*words that have been read */
+.hyperaudio-transcript .read{color:white;border-bottom:1px solid yellow;font-weight:bold;}
+
+/*current active word*/
+p .active{color:black!important;background:yellow;
+padding:5px 0px 2px 5px;}
+
+p .active::after {
+content:'';
+margin:0 7px 0 0px;
+border-right:3.5px solid black;
+/*animation*/
+animation: blink-animation 1s infinite;
+-webkit-animation: blink-animation 1s  infinite;}
+@keyframes blink-animation{
+0%{opacity: 0;}
+50%{opacity: 1;}
+100%{opacity: 0;}
+}
+
+/*current & past active paragraph*/
+p.active{}
+
+/*words that have not been read */
+.hyperaudio-transcript .unread {color: #333;border-bottom:1px dashed #333;}
+
+
+/* highlighted text */
+.hyperaudio-transcript .highlight.active {
+  background-color: none;
+}
